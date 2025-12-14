@@ -22,6 +22,7 @@ namespace Cuentas.Controllers
         // GET: Cuentas
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Cuenta.ToListAsync());
         }
 
@@ -33,8 +34,8 @@ namespace Cuentas.Controllers
                 return NotFound();
             }
 
-            var cuenta = await _context.Cuenta
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var cuenta = await _context.Cuenta.FirstOrDefaultAsync(m => m.Id == id);
+
             if (cuenta == null)
             {
                 return NotFound();
@@ -58,6 +59,7 @@ namespace Cuentas.Controllers
         {
             if (ModelState.IsValid)
             {
+                cuenta.balance = cuenta.creditos - cuenta.debitos;
                 _context.Add(cuenta);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +99,8 @@ namespace Cuentas.Controllers
             {
                 try
                 {
+                    cuenta.balance = cuenta.creditos - cuenta.debitos;
+
                     _context.Update(cuenta);
                     await _context.SaveChangesAsync();
                 }
@@ -155,3 +159,4 @@ namespace Cuentas.Controllers
         }
     }
 }
+

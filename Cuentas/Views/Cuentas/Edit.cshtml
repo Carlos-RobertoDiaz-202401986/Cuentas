@@ -1,54 +1,70 @@
 ﻿@model Cuentas.Models.Cuenta
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Edit</h1>
+<div class="container mt-5">
+    <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4 text-white bg-success p-3 rounded">
+                Editar Registro
+            </h2>
 
-<h4>Cuenta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="numero" class="control-label"></label>
-                <input asp-for="numero" class="form-control" />
-                <span asp-validation-for="numero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="descripcion" class="control-label"></label>
-                <input asp-for="descripcion" class="form-control" />
-                <span asp-validation-for="descripcion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="creditos" class="control-label"></label>
-                <input asp-for="creditos" class="form-control" />
-                <span asp-validation-for="creditos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="debitos" class="control-label"></label>
-                <input asp-for="debitos" class="form-control" />
-                <span asp-validation-for="debitos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="balance" class="control-label"></label>
-                <input asp-for="balance" class="form-control" />
-                <span asp-validation-for="balance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="numero" class="form-label"></label>
+                    <input asp-for="numero" class="form-control" />
+                    <span asp-validation-for="numero" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="descripcion" class="form-label"></label>
+                    <input asp-for="descripcion" class="form-control" />
+                    <span asp-validation-for="descripcion" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="creditos" class="form-label"></label>
+                    <input asp-for="creditos" class="form-control" />
+                    <span asp-validation-for="creditos" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="debitos" class="form-label"></label>
+                    <input asp-for="debitos" class="form-control" />
+                    <span asp-validation-for="debitos" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="balance" class="form-label"></label>
+                    <input asp-for="balance" class="form-control" />
+                    <span asp-validation-for="balance" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    @if (Model.balance >= 0)
+                    {
+                        <input type="submit" value="Guardar" class="btn btn-outline-success" />
+                    }
+                    else
+                    {
+                        <span class="text-danger fw-bold">
+                            No se puede editar: el balance es negativo
+                        </span>
+                    }
+
+                    <a asp-action="Index" class="btn btn-outline-primary">Volver a la lista</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

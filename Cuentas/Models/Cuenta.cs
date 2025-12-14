@@ -23,9 +23,22 @@
             this.descripcion = descripcion;
             this.creditos = creditos;
             this.debitos = debitos;
-            this.balance = balance;
+            this.balance = creditos - debitos;
+        }
+        public void setBalance()
+        {
+            this.balance = this.creditos - this.debitos;
+        }
+
+        public void setCredito(double credito)
+        {
+            this.creditos += credito;
+        }
+
+        public void setDebito(double monto)
+        {
+            this.debitos = monto;
         }
     }
 }
-
 

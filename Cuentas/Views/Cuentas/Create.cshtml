@@ -1,53 +1,87 @@
 ﻿@model Cuentas.Models.Cuenta
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear";
 }
 
-<h1>Create</h1>
+<div class="d-flex flex-column align-items-center mt-5">
 
-<h4>Cuenta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    <h2 class="card-title text-center mb-4 text-white bg-success p-3 rounded">
+        Crear Nuevo Registro
+    </h2>
+
+    <div class="card shadow-sm p-4 mb-4" style="max-width: 700px; width: 100%;">
+
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="numero" class="control-label"></label>
-                <input asp-for="numero" class="form-control" />
-                <span asp-validation-for="numero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="descripcion" class="control-label"></label>
-                <input asp-for="descripcion" class="form-control" />
-                <span asp-validation-for="descripcion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="creditos" class="control-label"></label>
-                <input asp-for="creditos" class="form-control" />
-                <span asp-validation-for="creditos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="debitos" class="control-label"></label>
-                <input asp-for="debitos" class="form-control" />
-                <span asp-validation-for="debitos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="balance" class="control-label"></label>
-                <input asp-for="balance" class="form-control" />
-                <span asp-validation-for="balance" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th colspan="2">Formulario de Cuenta</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><label asp-for="numero" class="form-label"></label></td>
+                        <td>
+                            <input asp-for="numero" class="form-control" />
+                            <span asp-validation-for="numero" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label asp-for="descripcion" class="form-label"></label></td>
+                        <td>
+                            <input asp-for="descripcion" class="form-control" />
+                            <span asp-validation-for="descripcion" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label asp-for="creditos" class="form-label"></label></td>
+                        <td>
+                            <input asp-for="creditos" class="form-control" />
+                            <span asp-validation-for="creditos" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label asp-for="debitos" class="form-label"></label></td>
+                        <td>
+                            <input asp-for="debitos" class="form-control" />
+                            <span asp-validation-for="debitos" class="text-danger"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label asp-for="balance" class="form-label"></label></td>
+                       
+                       
+                        
+
+
+
+                        
+
+                        
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <input type="submit" value="Crear" class="btn btn-success me-2" />
+                            <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -1,0 +1,41 @@
+﻿@model Cuentas.Models.Cuentas.Models.Movimiento
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<table class="table table-bordered border-primary">
+    <tbody>
+        <tr>
+            <th class="col-sm-3">Tipo</th>
+            <td class="col-sm-9">@Html.DisplayFor(model => model.Tipo)</td>
+        </tr>
+        <tr>
+            <th>Concepto</th>
+            <td>@Html.DisplayFor(model => model.Concepto)</td>
+        </tr>
+        <tr>
+            <th>Monto</th>
+            <td>@Html.DisplayFor(model => model.Monto)</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>@Html.DisplayFor(model => model.Fecha)</td>
+        </tr>
+        <tr>
+            <th>Id Cuenta</th>
+            <td>@Html.DisplayFor(model => model.IdCuenta)</td>
+        </tr>
+    </tbody>
+</table>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</form>

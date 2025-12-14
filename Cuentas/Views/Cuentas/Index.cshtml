@@ -1,59 +1,48 @@
 ﻿@model IEnumerable<Cuentas.Models.Cuenta>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Registros";
 }
 
-<h1>Index</h1>
+<h2 class="card-title text-center mb-4 text-dark bg-warning p-3 rounded">
+    Registro de Datos
+</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="text-center">
+    <a asp-action="Create" class="btn btn-lg" style="background-color:#6f42c1; color:white;">
+        Crear un Nuevo Registro
+    </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.numero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.creditos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.debitos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.balance)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.numero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.creditos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.debitos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.balance)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered border-success shadow-sm">
+        <thead class="table-secondary text-center">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.numero)</th>
+                <th>@Html.DisplayNameFor(model => model.descripcion)</th>
+                <th>@Html.DisplayNameFor(model => model.creditos)</th>
+                <th>@Html.DisplayNameFor(model => model.debitos)</th>
+                <th>@Html.DisplayNameFor(model => model.balance)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center">
+                    <td>@Html.DisplayFor(modelItem => item.numero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.creditos)</td>
+                    <td>@Html.DisplayFor(modelItem => item.debitos)</td>
+                    <td>@Html.DisplayFor(modelItem => item.balance)</td>
+                    <td>@(item.balance < 0 ? "Inactiva" : "activo") </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm me-1">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm me-1">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-info btn-sm">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

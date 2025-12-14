@@ -4,16 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Cuentas.Models;
+using Cuentas.Models.Cuentas.Models;
 
 namespace Cuentas.Data
 {
     public class CuentasContext : DbContext
     {
-        public CuentasContext (DbContextOptions<CuentasContext> options)
+        public CuentasContext(DbContextOptions<CuentasContext> options)
             : base(options)
         {
         }
 
         public DbSet<Cuentas.Models.Cuenta> Cuenta { get; set; } = default!;
+        public DbSet<Cuentas.Models.Cuentas.Models.Movimiento> Movimiento { get; set; } = default!;
     }
 }
+
+
+
